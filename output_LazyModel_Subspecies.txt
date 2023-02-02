@@ -1,0 +1,152 @@
+           2223,140967  2241,073989  2262,75751  2679,802856  ...  10930,54833  13276,73249  14943,03835  15048,89449
+ID Strain                                                     ...                                                    
+V13               0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+V142              0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+V151              0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+V160              0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+V161              0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+...                ...          ...         ...          ...  ...          ...          ...          ...          ...
+V800              0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+V82               0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+V90               0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+V91               0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+V95               0.00         0.00        0.00         0.00  ...         0.00         0.00         0.00         0.00
+
+[154 rows x 46 columns]
+                               Accuracy  Balanced Accuracy ROC AUC  F1 Score  Time Taken
+Model                                                                                   
+LinearSVC                          1.00               1.00    None      1.00        0.01
+NuSVC                              1.00               1.00    None      1.00        0.01
+BernoulliNB                        1.00               1.00    None      1.00        0.02
+CalibratedClassifierCV             1.00               1.00    None      1.00        0.08
+SVC                                1.00               1.00    None      1.00        0.01
+SGDClassifier                      1.00               1.00    None      1.00        0.01
+RidgeClassifierCV                  1.00               1.00    None      1.00        0.02
+RidgeClassifier                    1.00               1.00    None      1.00        0.01
+GaussianNB                         1.00               1.00    None      1.00        0.01
+RandomForestClassifier             1.00               1.00    None      1.00        0.14
+Perceptron                         1.00               1.00    None      1.00        0.02
+PassiveAggressiveClassifier        1.00               1.00    None      1.00        0.01
+LinearDiscriminantAnalysis         1.00               1.00    None      1.00        0.02
+BaggingClassifier                  1.00               1.00    None      1.00        0.06
+LogisticRegression                 1.00               1.00    None      1.00        0.02
+NearestCentroid                    1.00               1.00    None      1.00        0.01
+LGBMClassifier                     0.97               0.95    None      0.97        0.08
+LabelSpreading                     0.97               0.95    None      0.97        0.02
+LabelPropagation                   0.97               0.95    None      0.97        0.01
+ExtraTreesClassifier               0.97               0.95    None      0.97        0.16
+DecisionTreeClassifier             0.97               0.95    None      0.97        0.02
+KNeighborsClassifier               0.90               0.86    None      0.90        0.18
+ExtraTreeClassifier                0.77               0.78    None      0.78        0.02
+QuadraticDiscriminantAnalysis      0.71               0.72    None      0.72        0.02
+AdaBoostClassifier                 0.35               0.36    None      0.30        0.17
+DummyClassifier                    0.32               0.33    None      0.16        0.01
+          LinearSVC  NuSVC BernoulliNB target
+ID Strain                                    
+V214           Dysg   Dysg        Dysg   Dysg
+V573           Dysg   Dysg        Dysg   Dysg
+V91           Canis  Canis       Canis  Canis
+V634           Dysg   Dysg        Dysg   Dysg
+V684          Canis  Canis       Canis  Canis
+V492          Equis  Equis       Equis  Equis
+V220          Equis  Equis       Equis  Equis
+V298           Dysg   Dysg        Dysg   Dysg
+V287           Dysg   Dysg        Dysg   Dysg
+V4            Canis  Canis       Canis  Canis
+V543          Canis  Canis       Canis  Canis
+V778           Dysg   Dysg        Dysg   Dysg
+V222          Canis  Canis       Canis  Canis
+V794          Equis  Equis       Equis  Equis
+V544          Canis  Canis       Canis  Canis
+V572           Dysg   Dysg        Dysg   Dysg
+V71           Equis  Equis       Equis  Equis
+V200           Dysg   Dysg        Dysg   Dysg
+V195          Canis  Canis       Canis  Canis
+V69           Canis  Canis       Canis  Canis
+V249           Dysg   Dysg        Dysg   Dysg
+V293          Equis  Equis       Equis  Equis
+V745           Dysg   Dysg        Dysg   Dysg
+V494           Dysg   Dysg        Dysg   Dysg
+V755           Dysg   Dysg        Dysg   Dysg
+V252           Dysg   Dysg        Dysg   Dysg
+V575           Dysg   Dysg        Dysg   Dysg
+V253          Canis  Canis       Canis  Canis
+V534          Equis  Equis       Equis  Equis
+V493          Equis  Equis       Equis  Equis
+V763          Canis  Canis       Canis  Canis
+           2021,944237  2043,278686  2057,143278  2064,798679  ...  15399,07159  15495,16655  16076,29338  16202,09535
+ID Strain                                                      ...                                                    
+V13               0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+V142              0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+V151              0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+V160              0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+V161              0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+...                ...          ...          ...          ...  ...          ...          ...          ...          ...
+V800              0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+V82               0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+V90               0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+V91               0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+V95               0.00         0.00         0.00         0.00  ...         0.00         0.00         0.00         0.00
+
+[154 rows x 306 columns]
+                               Accuracy  Balanced Accuracy ROC AUC  F1 Score  Time Taken
+Model                                                                                   
+LGBMClassifier                     1.00               1.00    None      1.00        0.16
+BernoulliNB                        1.00               1.00    None      1.00        0.02
+RandomForestClassifier             1.00               1.00    None      1.00        0.17
+ExtraTreesClassifier               1.00               1.00    None      1.00        0.11
+BaggingClassifier                  0.97               0.98    None      0.97        0.05
+DecisionTreeClassifier             0.94               0.95    None      0.94        0.02
+ExtraTreeClassifier                0.90               0.91    None      0.91        0.02
+CalibratedClassifierCV             0.90               0.90    None      0.90        0.07
+Perceptron                         0.90               0.90    None      0.90        0.04
+AdaBoostClassifier                 0.90               0.88    None      0.90        0.17
+LogisticRegression                 0.87               0.87    None      0.87        0.04
+PassiveAggressiveClassifier        0.87               0.87    None      0.87        0.04
+GaussianNB                         0.90               0.87    None      0.90        0.03
+LinearSVC                          0.87               0.87    None      0.88        0.03
+NearestCentroid                    0.87               0.86    None      0.87        0.04
+RidgeClassifier                    0.84               0.85    None      0.84        0.02
+RidgeClassifierCV                  0.84               0.85    None      0.84        0.03
+SGDClassifier                      0.84               0.85    None      0.84        0.02
+KNeighborsClassifier               0.84               0.82    None      0.84        0.02
+NuSVC                              0.77               0.81    None      0.79        0.05
+SVC                                0.77               0.81    None      0.79        0.02
+LinearDiscriminantAnalysis         0.71               0.68    None      0.71        0.05
+QuadraticDiscriminantAnalysis      0.42               0.40    None      0.44        0.03
+LabelPropagation                   0.32               0.33    None      0.16        0.02
+LabelSpreading                     0.32               0.33    None      0.16        0.02
+DummyClassifier                    0.32               0.33    None      0.16        0.01
+          LGBMClassifier BernoulliNB RandomForestClassifier target
+ID Strain                                                         
+V214                Dysg        Dysg                   Dysg   Dysg
+V573                Dysg        Dysg                   Dysg   Dysg
+V91                Canis       Canis                  Canis  Canis
+V634                Dysg        Dysg                   Dysg   Dysg
+V684               Canis       Canis                  Canis  Canis
+V492               Equis       Equis                  Equis  Equis
+V220               Equis       Equis                  Equis  Equis
+V298                Dysg        Dysg                   Dysg   Dysg
+V287                Dysg        Dysg                   Dysg   Dysg
+V4                 Canis       Canis                  Canis  Canis
+V543               Canis       Canis                  Canis  Canis
+V778                Dysg        Dysg                   Dysg   Dysg
+V222               Canis       Canis                  Canis  Canis
+V794               Equis       Equis                  Equis  Equis
+V544               Canis       Canis                  Canis  Canis
+V572                Dysg        Dysg                   Dysg   Dysg
+V71                Equis       Equis                  Equis  Equis
+V200                Dysg        Dysg                   Dysg   Dysg
+V195               Canis       Canis                  Canis  Canis
+V69                Canis       Canis                  Canis  Canis
+V249                Dysg        Dysg                   Dysg   Dysg
+V293               Equis       Equis                  Equis  Equis
+V745                Dysg        Dysg                   Dysg   Dysg
+V494                Dysg        Dysg                   Dysg   Dysg
+V755                Dysg        Dysg                   Dysg   Dysg
+V252                Dysg        Dysg                   Dysg   Dysg
+V575                Dysg        Dysg                   Dysg   Dysg
+V253               Canis       Canis                  Canis  Canis
+V534               Equis       Equis                  Equis  Equis
+V493               Equis       Equis                  Equis  Equis
+V763               Canis       Canis                  Canis  Canis
