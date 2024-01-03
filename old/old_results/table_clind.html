@@ -1,0 +1,154 @@
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#aabcfe;border-spacing:0;}
+.tg td{background-color:#e8edff;border-bottom-width:1px;border-color:#aabcfe;border-style:solid;border-top-width:1px;
+  border-width:0px;color:#669;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;
+  word-break:normal;}
+.tg th{background-color:#b9c9fe;border-bottom-width:1px;border-color:#aabcfe;border-style:solid;border-top-width:1px;
+  border-width:0px;color:#039;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;
+  padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-jmht{background-color:#D2E4FC;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-svo0{background-color:#D2E4FC;border-color:inherit;text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-7btt">Models/Metrics</th>
+    <th class="tg-7btt">Acc. CV</th>
+    <th class="tg-7btt">St. Dev.</th>
+    <th class="tg-7btt">Prec. CV</th>
+    <th class="tg-7btt">Rec. CV</th>
+    <th class="tg-7btt">F1 CV</th>
+    <th class="tg-7btt">Acc.</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-jmht">LogisticRegression</td>
+    <td class="tg-svo0">0.861</td>
+    <td class="tg-svo0">0.034</td>
+    <td class="tg-svo0">0.861</td>
+    <td class="tg-svo0">0.861</td>
+    <td class="tg-svo0">0.856</td>
+    <td class="tg-svo0">0.710</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">LogisticRegression + PCA</td>
+    <td class="tg-c3ow">0.878</td>
+    <td class="tg-c3ow">0.025</td>
+    <td class="tg-c3ow">0.878</td>
+    <td class="tg-c3ow">0.878</td>
+    <td class="tg-c3ow">0.872</td>
+    <td class="tg-c3ow">0.710</td>
+  </tr>
+  <tr>
+    <td class="tg-jmht">Ridge</td>
+    <td class="tg-svo0">0.748</td>
+    <td class="tg-svo0">0.015</td>
+    <td class="tg-svo0">0.560</td>
+    <td class="tg-svo0">0.748</td>
+    <td class="tg-svo0">0.640</td>
+    <td class="tg-svo0">0.677</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">Ridge + PCA</td>
+    <td class="tg-c3ow">0.748</td>
+    <td class="tg-c3ow">0.015</td>
+    <td class="tg-c3ow">0.560</td>
+    <td class="tg-c3ow">0.748</td>
+    <td class="tg-c3ow">0.640</td>
+    <td class="tg-c3ow">0.677</td>
+  </tr>
+  <tr>
+    <td class="tg-jmht">DecisionTree</td>
+    <td class="tg-svo0">0.822</td>
+    <td class="tg-svo0">0.063</td>
+    <td class="tg-svo0">0.820</td>
+    <td class="tg-svo0">0.822</td>
+    <td class="tg-svo0">0.812</td>
+    <td class="tg-svo0">0.548</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">DecisionTree + PCA</td>
+    <td class="tg-c3ow">0.780</td>
+    <td class="tg-c3ow">0.063</td>
+    <td class="tg-c3ow">0.790</td>
+    <td class="tg-c3ow">0.780</td>
+    <td class="tg-c3ow">0.783</td>
+    <td class="tg-c3ow">0.710</td>
+  </tr>
+  <tr>
+    <td class="tg-jmht">K-nn</td>
+    <td class="tg-svo0">0.886</td>
+    <td class="tg-svo0">0.060</td>
+    <td class="tg-svo0">0.885</td>
+    <td class="tg-svo0">0.886</td>
+    <td class="tg-svo0">0.878</td>
+    <td class="tg-svo0">0.774</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">K-nn + PCA</td>
+    <td class="tg-c3ow">0.894</td>
+    <td class="tg-c3ow">0.055</td>
+    <td class="tg-c3ow">0.898</td>
+    <td class="tg-c3ow">0.894</td>
+    <td class="tg-c3ow">0.885</td>
+    <td class="tg-c3ow">0.742</td>
+  </tr>
+  <tr>
+    <td class="tg-jmht">RandomForest</td>
+    <td class="tg-svo0">0.894</td>
+    <td class="tg-svo0">0.061</td>
+    <td class="tg-svo0">0.895</td>
+    <td class="tg-svo0">0.894</td>
+    <td class="tg-svo0">0.885</td>
+    <td class="tg-svo0">0.774</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">RandomForest + PCA</td>
+    <td class="tg-c3ow">0.878</td>
+    <td class="tg-c3ow">0.045</td>
+    <td class="tg-c3ow">0.879</td>
+    <td class="tg-c3ow">0.878</td>
+    <td class="tg-c3ow">0.869</td>
+    <td class="tg-c3ow">0.806</td>
+  </tr>
+  <tr>
+    <td class="tg-jmht">BernoulliNB</td>
+    <td class="tg-svo0">0.748</td>
+    <td class="tg-svo0">0.015</td>
+    <td class="tg-svo0">0.560</td>
+    <td class="tg-svo0">0.748</td>
+    <td class="tg-svo0">0.640</td>
+    <td class="tg-svo0">0.677</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">BernoulliNB + PCA</td>
+    <td class="tg-c3ow">0.764</td>
+    <td class="tg-c3ow">0.059</td>
+    <td class="tg-c3ow">0.767</td>
+    <td class="tg-c3ow">0.764</td>
+    <td class="tg-c3ow">0.754</td>
+    <td class="tg-c3ow">0.645</td>
+  </tr>
+  <tr>
+    <td class="tg-jmht">GaussianNB</td>
+    <td class="tg-svo0">0.862</td>
+    <td class="tg-svo0">0.018</td>
+    <td class="tg-svo0">0.866</td>
+    <td class="tg-svo0">0.862</td>
+    <td class="tg-svo0">0.858</td>
+    <td class="tg-svo0">0.774</td>
+  </tr>
+  <tr>
+    <td class="tg-7btt">GaussianNB + PCA</td>
+    <td class="tg-c3ow">0.902</td>
+    <td class="tg-c3ow">0.041</td>
+    <td class="tg-c3ow">0.904</td>
+    <td class="tg-c3ow">0.902</td>
+    <td class="tg-c3ow">0.897</td>
+    <td class="tg-c3ow">0.774</td>
+  </tr>
+</tbody>
+</table>

@@ -1,0 +1,144 @@
+           2021,944237  2043,278686  2057,143278  ... 15495,16655 16076,29338 16202,09535
+ID Strain                                         ...                                    
+V13                NaN  6,55084E-05  7,98659E-05  ...         NaN         NaN         NaN
+V142               NaN  5,19407E-05          NaN  ...         NaN         NaN         NaN
+V151               NaN  5,80106E-05          NaN  ...         NaN         NaN         NaN
+V160               NaN   5,9015E-05          NaN  ...         NaN         NaN         NaN
+V161               NaN          NaN          NaN  ...         NaN         NaN         NaN
+...                ...          ...          ...  ...         ...         ...         ...
+V800       5,57269E-05          NaN  5,54677E-05  ...         NaN         NaN         NaN
+V82                NaN  4,95352E-05  4,27382E-05  ...         NaN         NaN         NaN
+V90                NaN  5,15619E-05          NaN  ...         NaN         NaN         NaN
+V91                NaN  5,49301E-05          NaN  ...         NaN         NaN         NaN
+V95        4,53898E-05  5,02981E-05  4,83904E-05  ...         NaN         NaN         NaN
+
+[128 rows x 306 columns]
+          Eritromicina Ceftiofur Tetraciclina  ... Sulfametossazolo_trimethoprim Clindamicina Enrofloxacin
+ID Strain                                      ...                                                        
+V13                 NS         S           NS  ...                             S            S           NS
+V142                NS         S            S  ...                             S            S           NS
+V151                 S         S            S  ...                             S            S           NS
+V160                 S         S           NS  ...                             S            S           NS
+V161                 S         S            S  ...                             S            S           NS
+...                ...       ...          ...  ...                           ...          ...          ...
+V800                 S         S           NS  ...                             S            S           NS
+V82                  S         S            S  ...                             S            S            S
+V90                  S         S           NS  ...                             S            S           NS
+V91                  S         S            S  ...                             S            S           NS
+V95                 NS         S           NS  ...                             S           NS            S
+
+[128 rows x 9 columns]
+           2021,944237  2043,278686  2057,143278  ...  15495,16655  16076,29338  16202,09535
+ID Strain                                         ...                                       
+V13           0.000000     0.000066     0.000080  ...          0.0          0.0          0.0
+V142          0.000000     0.000052     0.000000  ...          0.0          0.0          0.0
+V151          0.000000     0.000058     0.000000  ...          0.0          0.0          0.0
+V160          0.000000     0.000059     0.000000  ...          0.0          0.0          0.0
+V161          0.000000     0.000000     0.000000  ...          0.0          0.0          0.0
+...                ...          ...          ...  ...          ...          ...          ...
+V800          0.000056     0.000000     0.000055  ...          0.0          0.0          0.0
+V82           0.000000     0.000050     0.000043  ...          0.0          0.0          0.0
+V90           0.000000     0.000052     0.000000  ...          0.0          0.0          0.0
+V91           0.000000     0.000055     0.000000  ...          0.0          0.0          0.0
+V95           0.000045     0.000050     0.000048  ...          0.0          0.0          0.0
+
+[128 rows x 306 columns]
+Eritromicina : 0.421875
+Ceftiofur : 0.0
+Tetraciclina : 0.4609375
+Gentamicina : 0.625
+Penicillina : 0.0
+Ampicillina : 0.0
+Sulfametossazolo_trimethoprim : 0.015625
+Clindamicina : 0.21875
+Enrofloxacin : 0.6640625
+           Eritromicina  Tetraciclina  Gentamicina  Clindamicina  Enrofloxacin
+ID Strain                                                                     
+V13                   0             0            0             1             0
+V142                  0             1            1             1             0
+V151                  1             1            0             1             0
+V160                  1             0            0             1             0
+V161                  1             1            0             1             0
+...                 ...           ...          ...           ...           ...
+V800                  1             0            1             1             0
+V82                   1             1            0             1             1
+V90                   1             0            0             1             0
+V91                   1             1            0             1             0
+V95                   0             0            0             0             1
+
+[128 rows x 5 columns]
+aad(6) : 0.9453125
+ANT(6)-Ia : 0.859375
+APH(2'')-IIIa : 1.0
+APH(3')-IIIa : 0.9140625
+catS : 0.96875
+dfrF : 0.984375
+E. faecalis chloramphenicol acetyltransferase : 1.0
+Erm(47) : 0.9921875
+ErmB : 0.859375
+fexA : 1.0
+L._reuteri cat-TC : 1.0
+lmrP : 0.0078125
+lnuC : 0.984375
+lnuD : 0.9921875
+lsaC : 0.953125
+lsaE : 0.8203125
+mefE : 0.84375
+optrA : 1.0
+poxtA : 1.0
+SAT-4 : 0.9296875
+tet(40) : 1.0
+tet(L) : 0.9921875
+tetM : 0.796875
+tetO : 0.84375
+tetS : 0.984375
+tetT : 0.984375
+vatE : 1.0
+           lsaE  mefE  tetM  tetO
+ID Strain                        
+V13           0     0     0     0
+V142          0     0     0     0
+V151          0     0     0     0
+V160          0     0     0     0
+V161          0     0     0     0
+...         ...   ...   ...   ...
+V800          0     0     1     0
+V82           0     0     0     0
+V90           0     0     0     0
+V91           0     0     0     0
+V95           1     0     0     1
+
+[128 rows x 4 columns]
+fbp54 : 0.0
+gbs0630 : 0.9921875
+gbs0631 : 0.9921875
+gbs0632 : 0.9921875
+hasC : 0.0
+lmb : 0.9921875
+mf2 : 0.953125
+mf3 : 0.6484375
+scpA : 0.9921875
+sda : 0.875
+ska : 0.9921875
+slo : 0.9921875
+smeZ : 1.0
+spec : 0.96875
+speg : 0.8984375
+spek : 0.953125
+spel : 0.984375
+spem : 0.9609375
+           mf3
+ID Strain     
+V13          0
+V142         1
+V151         0
+V160         0
+V161         1
+...        ...
+V800         0
+V82          1
+V90          0
+V91          1
+V95          0
+
+[128 rows x 1 columns]

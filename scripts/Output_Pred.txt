@@ -1,0 +1,205 @@
+                Year Region
+ID Strain                  
+V13        ante 2004    NaN
+V142            2008    NaN
+V151            2008    NaN
+V160            2011    NaN
+V161            2011    NaN
+...              ...    ...
+V800            2021    NaN
+V82             2006    NaN
+V90             2006    NaN
+V91             2006    NaN
+V95             2006    NaN
+
+[154 rows x 2 columns]
+           2021,944237  2043,278686  2057,143278  ... 15495,16655 16076,29338 16202,09535
+ID Strain                                         ...                                    
+V13                NaN  6,55084E-05  7,98659E-05  ...         NaN         NaN         NaN
+V142               NaN  5,19407E-05          NaN  ...         NaN         NaN         NaN
+V151               NaN  5,80106E-05          NaN  ...         NaN         NaN         NaN
+V160               NaN   5,9015E-05          NaN  ...         NaN         NaN         NaN
+V161               NaN          NaN          NaN  ...         NaN         NaN         NaN
+...                ...          ...          ...  ...         ...         ...         ...
+V800       5,57269E-05          NaN  5,54677E-05  ...         NaN         NaN         NaN
+V82                NaN  4,95352E-05  4,27382E-05  ...         NaN         NaN         NaN
+V90                NaN  5,15619E-05          NaN  ...         NaN         NaN         NaN
+V91                NaN  5,49301E-05          NaN  ...         NaN         NaN         NaN
+V95        4,53898E-05  5,02981E-05  4,83904E-05  ...         NaN         NaN         NaN
+
+[154 rows x 306 columns]
+Eritromicina : 0.461038961038961
+Ceftiofur : 0.0
+Tetraciclina : 0.5194805194805194
+Gentamicina : 0.6233766233766234
+Penicillina : 0.0
+Ampicillina : 0.0
+Sulfametossazolo_trimethoprim : 0.01948051948051948
+Clindamicina : 0.2662337662337662
+Enrofloxacin : 0.6688311688311688
+aad(6) : 0.935064935064935
+ANT(6)-Ia : 0.8246753246753247
+APH(2'')-IIIa : 1.0
+APH(3')-IIIa : 0.9025974025974026
+catS : 0.9675324675324676
+dfrF : 0.9805194805194806
+E. faecalis chloramphenicol acetyltransferase : 0.9935064935064936
+Erm(47) : 0.987012987012987
+ErmB : 0.8181818181818182
+fexA : 0.9935064935064936
+L._reuteri cat-TC : 1.0
+lmrP : 0.006493506493506494
+lnuC : 0.987012987012987
+lnuD : 0.9935064935064936
+lsaC : 0.961038961038961
+lsaE : 0.7857142857142857
+mefE : 0.8506493506493507
+optrA : 0.9935064935064936
+poxtA : 0.9935064935064936
+SAT-4 : 0.922077922077922
+tet(40) : 0.987012987012987
+tet(L) : 0.9935064935064936
+tetM : 0.8181818181818182
+tetO : 0.7402597402597403
+tetS : 0.9805194805194806
+tetT : 0.974025974025974
+vatE : 0.9935064935064936
+fbp54 : 0.0
+gbs0630 : 0.9935064935064936
+gbs0631 : 0.9935064935064936
+gbs0632 : 0.9935064935064936
+hasC : 0.0
+lmb : 0.9935064935064936
+mf2 : 0.961038961038961
+mf3 : 0.6753246753246753
+scpA : 0.9935064935064936
+sda : 0.8766233766233766
+ska : 0.9935064935064936
+slo : 0.9935064935064936
+smeZ : 0.9935064935064936
+spec : 0.974025974025974
+speg : 0.9090909090909091
+spek : 0.961038961038961
+spel : 0.974025974025974
+spem : 0.948051948051948
+[['subspecies'], Index(['Eritromicina', 'Tetraciclina', 'Gentamicina', 'Clindamicina',
+       'Enrofloxacin'],
+      dtype='object'), Index(['ANT(6)-Ia', 'ErmB', 'lsaE', 'tetM', 'tetO'], dtype='object'), Index(['mf3'], dtype='object')]
+          Animal species of origin Haemolysis
+ID Strain                                    
+V190                        Bovine          a
+V200                        Bovine          a
+V217                         Ovine          a
+V220                         Swine          b
+V222                           Dog          b
+V240                         Swine          b
+V252                        Bovine          a
+V300                         Swine          a
+V302                           Cat          b
+V305                         Swine          b
+V421                           Dog          b
+V516                         Swine          b
+V517                        Bovine          a
+V518                           Dog          b
+V684       Reference strain (CCUG)          b
+V685       Reference strain (CCUG)          a
+V686       Reference strain (CCUG)          b
+V71                          Swine          b
+V72                            Dog          b
+V720                         Swine          b
+V731                        Bovine          a
+V737                           Dog          b
+V755                        Bovine          a
+V757                        Bovine          a
+V767                           Dog          b
+V778                        Bovine          a
+V794                         Swine          b
+           2284.78417962451  2576.78839994577  ...  16622.0077445811  16680.9056627079
+ID Strain                                      ...                                    
+V190               0.000088      6.826404e-06  ...          0.000009          0.000006
+V200               0.000057      9.403417e-06  ...          0.000019          0.000054
+V217               0.000058      4.080230e-06  ...          0.000004          0.000005
+V220               0.000117      5.732483e-06  ...          0.000016          0.000019
+V222               0.000069      1.196531e-05  ...          0.000015          0.000007
+V240               0.000088      2.777257e-05  ...          0.000026          0.000022
+V252               0.000072      1.472277e-05  ...          0.000010          0.000006
+V300               0.000083      2.743188e-06  ...          0.000010          0.000006
+V302               0.000050      3.449920e-05  ...          0.000012          0.000002
+V305               0.000051      5.881888e-06  ...          0.000010          0.000010
+V421               0.000063      3.262375e-07  ...          0.000008          0.000005
+V516               0.000088      2.121709e-04  ...          0.000007          0.000009
+V517               0.000166      1.550022e-06  ...          0.000010          0.000006
+V518               0.000066      1.228012e-05  ...          0.000013          0.000003
+V684               0.000080      3.048988e-05  ...          0.000008          0.000007
+V685               0.000084      4.989090e-05  ...          0.000020          0.000015
+V686               0.000072      6.176432e-05  ...          0.000011          0.000011
+V71                0.000095      3.488884e-06  ...          0.000003          0.000008
+V72                0.000074      1.298753e-05  ...          0.000016          0.000006
+V720               0.000114      2.994314e-05  ...          0.000009          0.000023
+V731               0.000079      4.236508e-06  ...          0.000035          0.000030
+V737               0.000095      4.685103e-05  ...          0.000012          0.000010
+V755               0.000090      9.202020e-06  ...          0.000004          0.000009
+V757               0.000060      9.557288e-06  ...          0.000008          0.000005
+V767               0.000039      2.733928e-07  ...          0.000009          0.000008
+V778               0.000056      6.890392e-06  ...          0.000011          0.000011
+V794               0.000017      2.546210e-05  ...          0.000015          0.000016
+
+[27 rows x 107 columns]
+      K-means
+V190        1
+V200        1
+V217        1
+V220        0
+V222        2
+V240        0
+V252        1
+V300        1
+V302        0
+V305        0
+V421        2
+V516        0
+V517        1
+V518        2
+V684        0
+V685        1
+V686        0
+V71         0
+V72         2
+V720        0
+V731        1
+V737        2
+V755        1
+V757        1
+V767        2
+V778        1
+V794        0
+     subspecies_pred Eritromicina_pred Tetraciclina_pred  ... tetM_pred tetO_pred mf3_pred
+V190    Dysgalactiae                NS                NS  ...        NS        NS       NS
+V200    Dysgalactiae                NS                NS  ...        NS        NS       NS
+V217    Dysgalactiae                 S                NS  ...        NS        NS       NS
+V220     Equisimilis                NS                NS  ...        NS         S       NS
+V222           Canis                 S                 S  ...        NS        NS       NS
+V240     Equisimilis                NS                NS  ...        NS         S       NS
+V252    Dysgalactiae                NS                NS  ...        NS        NS       NS
+V300    Dysgalactiae                 S                NS  ...        NS        NS       NS
+V302           Canis                 S                 S  ...        NS        NS        S
+V305     Equisimilis                NS                NS  ...        NS         S       NS
+V421           Canis                 S                 S  ...        NS        NS       NS
+V516     Equisimilis                NS                NS  ...        NS         S       NS
+V517    Dysgalactiae                NS                NS  ...        NS        NS       NS
+V518           Canis                 S                 S  ...        NS        NS       NS
+V684           Canis                 S                 S  ...        NS        NS       NS
+V685    Dysgalactiae                 S                 S  ...        NS        NS       NS
+V686           Canis                 S                 S  ...        NS        NS       NS
+V71      Equisimilis                NS                NS  ...        NS         S       NS
+V72            Canis                 S                 S  ...        NS        NS       NS
+V720     Equisimilis                NS                NS  ...        NS         S       NS
+V731    Dysgalactiae                NS                NS  ...        NS        NS       NS
+V737           Canis                 S                 S  ...        NS        NS       NS
+V755    Dysgalactiae                NS                NS  ...        NS        NS       NS
+V757    Dysgalactiae                NS                NS  ...        NS        NS       NS
+V767           Canis                 S                 S  ...        NS        NS       NS
+V778    Dysgalactiae                NS                NS  ...        NS        NS       NS
+V794     Equisimilis                NS                NS  ...        NS         S       NS
+
+[27 rows x 12 columns]

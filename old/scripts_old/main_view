@@ -1,0 +1,19 @@
+data = list()
+for scaler, in scalers:
+    for dataframe, in dataframes:
+        raw = list()
+        for type_feature in type_features:
+            raw.append("Maldi all feat")
+            raw.append("Maldi all feat")
+            
+            data.append(list())
+                         
+data_accuracy = [['Maldi (46 feat)',accuracy_logic,accuracy_tree,accuracy_knn,accuracy_rm],
+                 ['Maldi with PCA',accuracy_logic_pca,accuracy_tree_pca,accuracy_knn_pca,accuracy_rm_pca],
+                 ['Maldi with PCA2',accuracy_logic_pca2,accuracy_tree_pca2,accuracy_knn_pca2,accuracy_rm_pca2],
+                 ['Maldi with 10 features',accuracy_logic10,accuracy_tree10,accuracy_knn10,accuracy_rm10]]
+feature_index = ['Feature','Logistic Regression', 'Decision Tree', 'Knn', 'Random Forest']
+
+df_accuracy = pd.DataFrame(data_accuracy, columns=feature_index)
+df_accuracy.to_csv('accuracy_maldi_46picchi_pca_95_MM.csv', index=False)
+df_accuracy

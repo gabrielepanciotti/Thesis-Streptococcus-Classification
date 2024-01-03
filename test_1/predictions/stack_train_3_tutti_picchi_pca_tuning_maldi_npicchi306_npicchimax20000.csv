@@ -1,0 +1,15 @@
+,Eritromicina_pred,Eritromicina,Tetraciclina_pred,Tetraciclina,Gentamicina_pred,Gentamicina,Clindamicina_pred,Clindamicina,Enrofloxacin_pred,Enrofloxacin,lsaE_pred,lsaE,mefE_pred,mefE,tetM_pred,tetM,tetO_pred,tetO,mf3_pred,mf3,subspecies_pred,subspecies
+V1046,S,NS,S,NS,NS,NS,S,NS,NS,NS,0,0,0,0,0,0,0,1,1,1,Canis,Equisimilis
+V1203,S,S,S,NS,NS,NS,S,NS,NS,NS,0,1,0,0,0,0,0,1,1,0,Canis,Equisimilis
+V1226,S,NS,S,NS,NS,S,S,NS,NS,S,0,0,0,0,0,0,0,0,1,0,Canis,Equisimilis
+V1285,S,na,S,,NS,,S,,NS,,0,1,0,0,0,0,0,0,1,0,Canis,Equisimilis
+V1398,S,NS,S,NS,NS,NS,S,NS,NS,NS,0,0,0,0,0,0,0,1,1,0,Canis,Equisimilis
+V1450,S,NS,S,NS,NS,NS,S,NS,NS,S,0,1,0,0,0,0,0,1,1,0,Canis,Equisimilis
+V1451,S,S,S,,NS,,S,,NS,,0,0,0,0,0,0,0,1,1,0,Canis,Equisimilis
+V1524,S,S,S,NS,NS,S,S,NS,NS,NS,0,1,0,1,0,0,0,1,1,0,Canis,Equisimilis
+V234,S,S,S,NS,NS,NS,S,NS,NS,NS,0,1,0,0,0,0,0,1,1,0,Canis,Equisimilis
+V257,S,S,S,NS,NS,NS,S,NS,NS,NS,0,1,0,0,0,0,0,0,1,0,Canis,Equisimilis
+V767,S,NS,S,NS,NS,NS,S,NS,NS,NS,0,0,0,1,0,0,0,1,1,0,Canis,Canis
+V912,S,S,S,NS,NS,NS,S,S,NS,NS,0,0,0,0,0,0,0,0,1,0,Canis,Canis
+V946,S,S,S,NS,NS,NS,S,NS,NS,NS,0,0,0,0,0,0,0,1,1,0,Canis,Equisimilis
+V971,S,S,S,NS,NS,NS,S,S,NS,S,0,0,0,0,0,0,0,0,1,0,Canis,Equisimilis
