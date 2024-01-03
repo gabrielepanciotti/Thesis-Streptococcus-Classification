@@ -72,14 +72,14 @@ file_test = 'Testing_2_with_Antibiotics.csv'
 n_test = 56
 cartella_train = 'train_2'
 cartella_test = 'test_1'
-file_train = "Training_2_"+str(n)+"picchi.csv"
+file_train = "Training_2_"+str(n)+"picchi_withTest1.csv"
 file_test = 'Testing_1.csv'
 '''
 n = 357
 n_test = 114
 cartella_train = 'train_2'
 cartella_test = 'test_2'
-file_train = "Training_2_"+str(n)+"picchi.csv"
+file_train = "Training_2_"+str(n)+"picchi_withTest1.csv"
 file_test = 'Testing_2_with_Antibiotics.csv'
 
 '''n = 306
@@ -100,14 +100,14 @@ file_test = 'Testing_2_with_Antibiotics.csv'
 n_test = 56
 cartella_train = 'train_4'
 cartella_test = 'test_1'
-file_train = "Training_4_"+str(n)+"picchi_NoTest2.csv"
+file_train = "Training_4_"+str(n)+"picchi_withTest1_NoTest2"
 file_test = 'Testing_1.csv'
 '''
 '''n = 357
 n_test = 114
 cartella_train = 'train_4'
 cartella_test = 'test_2'
-file_train = "Training_4_"+str(n)+"picchi_NoTest2.csv"
+file_train = "Training_4_"+str(n)+"picchi_withTest1_NoTest2"
 file_test = 'Testing_2_with_Antibiotics.csv'
 '''
 scaled = ''

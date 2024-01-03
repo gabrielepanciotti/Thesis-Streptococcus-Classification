@@ -21,28 +21,28 @@ n_pred = 114
 cartella_train = 'train_1'
 cartella_pred = 'new_prediction'
 file_train = "Training_1_"+str(n)+"picchi.csv"
-file_test = 'Testing_2-NoTarget.csv'
+file_test = 'Testing_2.csv'
 
 '''n = 357
 n_pred = 114
 cartella_train = 'train_2'
 cartella_pred = 'new_prediction'
-file_train = "Training_2_"+str(n)+"picchi.csv"
-file_test = 'Testing_2-NoTarget.csv'
+file_train = "Training_2_"+str(n)+"picchi_withTest1.csv"
+file_test = 'Testing_2.csv'
 '''
 '''n = 306
 n_pred = 114
 cartella_train = 'train_3'
 cartella_pred = 'new_prediction'
 file_train = "Training_3_"+str(n)+"picchi_NoTest2.csv"
-file_test = 'Testing_2-NoTarget.csv'
+file_test = 'Testing_2.csv'
 '''
 '''n = 357
 n_pred = 114
 cartella_train = 'train_4'
 cartella_pred = 'new_prediction'
-file_train = "Training_4_"+str(n)+"picchi_NoTest2.csv"
-file_test = 'Testing_2-NoTarget.csv'
+file_train = "Training_4_"+str(n)+"picchi_withTest1_NoTest2"
+file_test = 'Testing_2.csv'
 '''
 
 start = 9

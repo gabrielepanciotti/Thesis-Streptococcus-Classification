@@ -43,31 +43,26 @@ np.set_printoptions(precision=5, suppress=True)
 RANDOM_STATE = 46
 N_JOBS = -1
 
-class_names = ["Canis", "Dysg. Equisimilis", "Dysg. Dysgalactiae"]
-
 start = 9
 n_antibiotici = 9
 n_geni = 27
 n_virulenza = 18
 
-'''n = 306
+n = 306
 cartella = 'train_1'
 file_train = "Training_1_"+str(n)+"picchi.csv"
-'''
 
 '''n = 357
 cartella = 'train_2'
-file_train = "Training_2_"+str(n)+"picchi.csv"
+file_train = "Training_2_"+str(n)+"picchi_withTest1.csv"
 '''
-
-n = 306
+'''n = 306
 cartella = 'train_3'
 file_train = "Training_3_"+str(n)+"picchi_NoTest2.csv"
-
-
+'''
 '''n = 357
 cartella = 'train_4'
-file_train = "Training_4_"+str(n)+"picchi_NoTest2.csv"
+file_train = "Training_4_"+str(n)+"picchi_withTest1_NoTest2.csv"
 '''
 scaled = ''
 scaler = ''
@@ -76,6 +71,7 @@ reduction = ''
 tuning = 'tuning_'
 picco_max = 20000
 
+class_names = ["Canis", "Dysg. Equisimilis", "Dysg. Dysgalactiae"]
 map_target = {
     "Streptococcus canis": 2,
     "Streptococcus dysgalactiae subsp. dysgalactiae": 1,
