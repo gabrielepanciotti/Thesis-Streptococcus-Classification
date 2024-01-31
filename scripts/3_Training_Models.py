@@ -18,10 +18,13 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.decomposition import PCA
 from sklearn.base import clone
-from sklearn.naive_bayes import BernoulliNB, GaussianNB
+from sklearn.naive_bayes import BernoulliNB, GaussianNB 
 from sklearn.svm import SVC
 from sklearn.svm import LinearSVC
 from sklearn.semi_supervised import LabelPropagation, LabelSpreading
+from sklearn.calibration import CalibratedClassifierCV
+from sklearn.model_selection import cross_val_predict
+
 
 from mlxtend.classifier import StackingCVClassifier
 from sklearn.ensemble import StackingClassifier
@@ -49,11 +52,11 @@ n_geni = 27
 n_virulenza = 18
 
 n = 306
-cartella = 'train_1'
+cartella = 'train_1_prova'
 file_train = "Training_1_"+str(n)+"picchi.csv"
 
 '''n = 357
-cartella = 'train_2'
+cartella = 1'train_2'
 file_train = "Training_2_"+str(n)+"picchi_withTest1.csv"
 '''
 '''n = 306
@@ -62,7 +65,7 @@ file_train = "Training_3_"+str(n)+"picchi_NoTest2.csv"
 '''
 '''n = 357
 cartella = 'train_4'
-file_train = "Training_4_"+str(n)+"picchi_withTest1_NoTest2.csv"
+file_train = "Training_4_"+str(n)+"picchi_withTest_NoTest2.csv"
 '''
 scaled = ''
 scaler = ''
@@ -156,11 +159,11 @@ models = {
   'RandomForest': RandomForestClassifier(random_state=RANDOM_STATE),
   'BernoulliNB': BernoulliNB(),
   'GaussianNB': GaussianNB(),
-  'NearestCentroid': NearestCentroid(),
-  'SVC' : SVC(),
+  #'NearestCentroid': NearestCentroid(),
+  'SVC' : SVC(probability=True),
   'LinearSVC' : LinearSVC(dual=True),
-  'LabelPropagation' : LabelPropagation(),
-  'LabelSpreading' : LabelSpreading(),
+  #'LabelPropagation' : LabelPropagation(),
+  #'LabelSpreading' : LabelSpreading(),
   'SGDClassifier' : SGDClassifier()
 }
 
@@ -169,9 +172,9 @@ models_stack = {
   'Ridge' : RidgeClassifier(random_state=RANDOM_STATE),
   'DecisionTree': DecisionTreeClassifier(random_state=RANDOM_STATE),
   'K-nn': KNeighborsClassifier(),
-  #'RandomForest': RandomForestClassifier(random_state=RANDOM_STATE),
+  'RandomForest': RandomForestClassifier(random_state=RANDOM_STATE),
   'GaussianNB': GaussianNB(),
-  'SVC' : SVC()
+  'SVC' : SVC(probability=True)
 }
 
 # define the models for clustering
@@ -289,17 +292,54 @@ def makeScore(y_test, y_pred):
 
 def makeCrossValidation(model, X_train, y_train):
     score = {}
-    cv = cross_validate(estimator=model, X=X_train, y=y_train,
-                        scoring=metrics, cv=skfold,
-                        n_jobs=N_JOBS, verbose=0)
+    cv_results = cross_validate(estimator=model, X=X_train, y=y_train,
+                                scoring=metrics, cv=skfold,
+                                n_jobs=N_JOBS, verbose=0, return_estimator=True)
 
-    score['acc'] = cv.get('test_accuracy').mean()
-    score['st'] = cv.get('test_accuracy').std()
-    score['prec'] = cv.get('test_precision_weighted').mean()
-    score['rec'] = cv.get('test_recall_weighted').mean()
-    score['f1'] = cv.get('test_f1_weighted').mean()
+    score['acc'] = cv_results.get('test_accuracy').mean()
+    score['st'] = cv_results.get('test_accuracy').std()
+    score['prec'] = cv_results.get('test_precision_weighted').mean()
+    score['rec'] = cv_results.get('test_recall_weighted').mean()
+    score['f1'] = cv_results.get('test_f1_weighted').mean()
 
+    #print(cv_results['estimator'])
+    # Calcolo della confidenza per ogni fold
+    confidences = []
+    for estimator in cv_results['estimator']:
+        if isinstance(estimator, StackingClassifier):
+            # Calcola la confidenza per StackingClassifier
+            #print('qua ci entro')
+            if hasattr(estimator.final_estimator_, "predict_proba"):
+                #print('anche qua')
+                probas = cross_val_predict(estimator, X_train, y_train, cv=skfold, method='predict_proba')
+                confidenza = np.max(probas, axis=1).mean()
+                #print(confidenza)
+                confidences.append(confidenza)
+            else:
+                #print('invece qua')
+                # Calibra il meta-classificatore di StackingClassifier
+                meta_estimator_clone = clone(estimator.final_estimator_)
+                calibrated_meta_estimator = CalibratedClassifierCV(meta_estimator_clone, method='sigmoid', cv=skfold)
+                estimator.final_estimator_ = calibrated_meta_estimator
+                estimator.fit(X_train, y_train)
+                probas = estimator.predict_proba(X_train)
+                confidences.append(np.max(probas, axis=1).mean())
+        elif hasattr(estimator, "predict_proba"):
+            probas = cross_val_predict(estimator, X_train, y_train, cv=skfold, method='predict_proba')
+            confidences.append(np.max(probas, axis=1).mean())
+        else:
+            # Calibra il modello per supportare predict_proba
+            estimator_clone = clone(estimator)
+            calibrated_estimator = CalibratedClassifierCV(estimator_clone, method='sigmoid', cv=skfold)
+            calibrated_estimator.fit(X_train, y_train)
+            probas = cross_val_predict(calibrated_estimator, X_train, y_train, cv=skfold, method='predict_proba')
+            confidences.append(np.max(probas, axis=1).mean())
+
+    score['confidence'] = np.mean(confidences) if confidences else None
+    print(score['confidence'])
+    print('=================================')
     return score
+
 
 def makeCrossValidationCluster(model, X):
     model.fit(X)
@@ -450,7 +490,7 @@ df_agg = pd.concat([maldi, feat_agg_dummies], axis=1)
 pred_ensemble_cluster = {}
 
 dfs_cluster = {'maldi' : maldi,
-       'animals' : df_animals,
+       #'animals' : df_animals,
        'agg' : df_agg}
 
 model_obj_cluster = {}
@@ -540,15 +580,15 @@ display(df_cluster_agg)
 score_target = {}
 
 dfs = {'maldi' : maldi,
-       'clusters' : df_clusters,
-       'animals' : df_animals,
-       'agg' : df_agg,
+       #'clusters' : df_clusters,
+       #'animals' : df_animals,
+       #'agg' : df_agg,
        'clusters+agg' : df_cluster_agg}
 
 model_obj = {}
 #Dataframe con risultati metriche per ogni modello
 metrics_df = pd.DataFrame(columns=['Target', 'Dataframe', 'Model', 'Accuracy CV', 'St. Dev. CV',
-                            'Precision CV', 'Recall CV','F1-Score CV','Accuracy','Bal. Accuracy'])
+                            'Precision CV', 'Recall CV', 'F1-Score CV', 'Accuracy', 'Bal. Accuracy', 'Confidence'])
 prediction = {}
 #Per ogni tipologia di target del problema (sottospecie, antibiotici, geni, fattori, st)
 for str_target, target in targets.items():
@@ -568,24 +608,22 @@ for str_target, target in targets.items():
       # split the data into training and testing sets
       X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=RANDOM_STATE)
 
-      #Modello di stacking della libreria mlxtend
+      '''#Modello di stacking della libreria mlxtend
       stack = StackingCVClassifier(classifiers = list(models_stack.values()),
                                   shuffle = False,
-                                  use_probas = False,
+                                  use_probas = True,
                                   cv = 5,
                                   meta_classifier = models_stack['SVC'])
-      models['stack'] = stack
+      models['stack'] = stack'''
 
       #Scorre i modelli nel dizionario dei modelli utilizzati
       for name, model in models.items():
-        print("Modello "+name)
-        model_base = model
-        model_best = model
+        #print("Modello "+name)
 
         #Modello base: cross validation with score, fit, predict
-        score_cv = makeCrossValidation(model_base, X_train, y_train)
-        model_base.fit(X_train, y_train)
-        y_pred = model_base.predict(X_test)
+        score_cv = makeCrossValidation(model, X_train, y_train)
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
 
         score = makeScore(y_test, y_pred)
 
@@ -598,16 +636,17 @@ for str_target, target in targets.items():
                 'Recall CV' : score_cv['rec'],
                 'F1-Score CV' : score_cv['f1'],
                 'Accuracy' : score['acc'],
-                'Bal. Accuracy' : score['b_acc']}
+                'Bal. Accuracy' : score['b_acc'],
+                'Confidence' : score_cv['confidence']}
 
         #display(ris)
         metrics_df.loc[len(metrics_df)] = ris
-        model_obj[str_target+'_'+column+'_'+str_df+'_'+name] = model_base
+        model_obj[str_target+'_'+column+'_'+str_df+'_'+name] = model
         
         if name in param_grid and column == 'subspecies' and tuning!='':
           #TUNING MODEL
-          print('TUNING')
-          model_best, score_cv = makeTuning(model_best, X_train, y_train, name)
+          #print('TUNING')
+          model_best, score_cv = makeTuning(model, X_train, y_train, name)
           
           model_best.fit(X_train, y_train)
           #display(X_test)
@@ -625,14 +664,15 @@ for str_target, target in targets.items():
                   'Recall CV' : score_cv['rec'],
                   'F1-Score CV' : score_cv['f1'],
                   'Accuracy' : score['acc'],
-                  'Bal. Accuracy' : score['b_acc']}
+                  'Bal. Accuracy' : score['b_acc'],
+                  'Confidence' : score_cv['confidence']}
+          
           #display(ris)
           metrics_df.loc[len(metrics_df)] = ris
           model_obj[str_target+'_'+column+'_'+str_df+'_'+name+'_Best'] = model_best
           pickle.dump(model_best, open('../'+cartella+'/models/models_base/'+name+'_'+tutti_picchi+reduction+scaled+scaler+tuning+column+'_'+str_df+'_npicchi'+str(n)+'_npicchimax'+str(picco_max)+'.pkl', 'wb'))
-          #print("Tuning fatto")
         else:
-          pickle.dump(model_base, open('../'+cartella+'/models/models_base/'+name+'_'+tutti_picchi+reduction+scaled+scaler+tuning+column+'_'+str_df+'_npicchi'+str(n)+'_npicchimax'+str(picco_max)+'.pkl', 'wb'))
+          pickle.dump(model, open('../'+cartella+'/models/models_base/'+name+'_'+tutti_picchi+reduction+scaled+scaler+tuning+column+'_'+str_df+'_npicchi'+str(n)+'_npicchimax'+str(picco_max)+'.pkl', 'wb'))
         
   #Aggiunge i valori del target nei dizionari
   prediction[column].index = X_test.index
@@ -648,6 +688,7 @@ display(metrics_df)
 #una volta che un modello è stato selezionato come migliore per un target data una specifica metrica,
 #viene rimosso in modo che non si ripeta lo stesso modello per tutte le metriche
 metriche = ['Accuracy CV', 'Bal. Accuracy', 'F1-Score CV', 'Recall CV', 'Precision CV']
+confidences = {}
 best_models = {}
 for str_df, X in dfs.items():
   best_models[str_df] = {}
@@ -666,14 +707,17 @@ for str_df, X in dfs.items():
         model = subs_df.loc[id,'Model']
         max = subs_df[metric].max()
         list_models.append(str_target+'_'+column+'_'+str_df+'_'+model)
+        confidences[str_target+'_'+column+'_'+str_df+'_'+model] = subs_df.loc[id,'Confidence']
         subs_df.drop(id, inplace = True)
 
-        print(column+' : '+str_df+' : '+model+' : '+metric+' : '+str(max))
+        #print(column+' : '+str_df+' : '+model+' : '+metric+' : '+str(max))
       best_models[str_df][column] = list_models
+      
 #display(best_models)
-
+display(confidences)
 metrics_stack = pd.DataFrame(columns=['Target', 'Dataframe', 'Model', 'Accuracy CV', 'St. Dev. CV',
-                            'Precision CV', 'Recall CV','F1-Score CV','Accuracy','Bal. Accuracy'])
+                            'Precision CV', 'Recall CV', 'F1-Score CV', 'Accuracy', 'Bal. Accuracy', 
+                            'Confidence', 'Confidence Media', 'Confidence Mediana'])
 dfs = {'maldi' : maldi,
        'clusters' : df_clusters,
        'animals' : df_animals,
@@ -688,16 +732,17 @@ for str_df,targets_best in best_models.items():
     #print(str_target)
     #print(list_models)
     stack_models = list()
-    
+    confidence = list()
     for str_model in list_models:
       model = model_obj[str_model]
-      #print(model)
+      print(str_model)
       stack_models.append((str_model, clone(model)))
-
+      confidence.append(confidences[str_model])
+    print(confidence)  
+    conf_media = np.mean(confidence)
+    conf_mediana = np.median(confidence)
     final_model = LogisticRegression()
     stack = StackingClassifier(estimators=stack_models, final_estimator=final_model)
-    model_base = stack
-    model_best = stack
 
     s = str_model.split('_')
     #print(s)
@@ -710,11 +755,11 @@ for str_df,targets_best in best_models.items():
     #display(X_train)
     X_train.dropna(inplace=True)
     prediction[str_df].index = X_test.index
-    
-    model_base.fit(X_train, y_train)
-    final_models[str_model] = model_base
-    y_pred = model_base.predict(X_test)
+    stack.fit(X_train, y_train)
+    final_models[str_model] = stack
+    y_pred = stack.predict(X_test)
 
+    score_cv = makeCrossValidation(stack, X_train, y_train)
     prediction[str_df][str_target+'_pred'] = y_pred
     
     if (str_target == 'antibiotici'):
@@ -722,9 +767,9 @@ for str_df,targets_best in best_models.items():
     prediction[str_df][column] = y
 
     #Modello base: cross validation with score, fit, predict
-    score_cv = makeCrossValidation(model_base, X_train, y_train)
+    
     score = makeScore(y_test, y_pred)
-
+    
     ris = {'Target': str_target,
           'Dataframe' : str_df,
           'Model': 'Stack',
@@ -734,12 +779,15 @@ for str_df,targets_best in best_models.items():
           'Recall CV' : score_cv['rec'],
           'F1-Score CV' : score_cv['f1'],
           'Accuracy' : score['acc'],
-          'Bal. Accuracy' : score['b_acc']}
+          'Bal. Accuracy' : score['b_acc'],
+          'Confidence' : score_cv['confidence'],
+          'Confidence Media' : conf_media,
+          'Confidence Mediana' : conf_mediana}
 
     #display(ris)
     metrics_stack.loc[len(metrics_stack)] = ris
     
-    pickle.dump(model_base, open('../'+cartella+'/models/stack_'+tutti_picchi+reduction+scaled+scaler+tuning+str_target+'_'+str_df+'_npicchi'+str(n)+'_npicchimax'+str(picco_max)+'.pkl', 'wb'))
+    pickle.dump(stack, open('../'+cartella+'/models/stack_'+tutti_picchi+reduction+scaled+scaler+tuning+str_target+'_'+str_df+'_npicchi'+str(n)+'_npicchimax'+str(picco_max)+'.pkl', 'wb'))
 
   prediction[str_df]['subspecies'] = prediction[str_df]['subspecies'].map(map_target_inv)
   prediction[str_df]['subspecies_pred'] = prediction[str_df]['subspecies_pred'].map(map_target_inv)
@@ -748,33 +796,3 @@ for str_df,targets_best in best_models.items():
 print('\n')
 metrics_stack.to_csv('../'+cartella+'/results/stack_'+tutti_picchi+reduction+scaled+scaler+tuning+'npicchi'+str(n)+'_npicchimax'+str(picco_max)+'.csv', index = False)
 display(metrics_stack)
-
-name_best = list()
-score_best = list()
-target_list = list()
-for str_target, target in targets.items():
-  columns = target.columns
-  for column in columns:
-    filter = metrics_stack["Target"]==column
-    subs_df = metrics_stack.where(filter, inplace = False).dropna()
-    name = subs_df['Accuracy'].idxmax()
-    score = subs_df['Accuracy'].max()
-    target_list.append(column)
-    name_best.append(name)
-    score_best.append(score)
-
-print(target_list)
-print(name_best)
-print(score_best)
-
-# bars are by default width 0.8, so we'll add 0.1 to the left coordinates
-# so that each bar is centered
-y_pos = np.arange(len(target_list))
-plt.rcParams["figure.figsize"] = (16,6)
-# plot bars with left x-coordinates [xs], heights [num_oscars]
-plt.barh(y_pos, score_best, align='center',)
-# label x-axis with movie names at bar centers
-plt.yticks(y_pos, target_list)
-plt.xlabel("% of Accuracy")
-plt.title("Risultati di Balanced Accuracy sul miglior modello ensemble sui targets")
-plt.show()
